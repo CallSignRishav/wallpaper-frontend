@@ -53,17 +53,9 @@ const NavComp = () => {
           className="hidden lg:flex">
           <NavbarItem>
             <Link
-              href={"/sign-up"}
+              href={"/auth"}
               className="text-xl font-bold tracking-widest">
-              <Button color="success">Sign up</Button>
-            </Link>
-          </NavbarItem>
-
-          <NavbarItem>
-            <Link
-              href={"/log-in"}
-              className="text-xl font-bold tracking-widest">
-              <Button color="primary">Log in</Button>
+              <Button color="success">Log in</Button>
             </Link>
           </NavbarItem>
 
@@ -85,15 +77,7 @@ const NavComp = () => {
             <Link
               href={"/sign-up"}
               className="text-xl font-bold tracking-widest">
-              <Button color="success">Sign up</Button>
-            </Link>
-          </NavbarMenuItem>
-
-          <NavbarMenuItem>
-            <Link
-              href={"/log-in"}
-              className="text-xl font-bold tracking-widest">
-              <Button color="primary">Log in</Button>
+              <Button color="success">Log in</Button>
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>
