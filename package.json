@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@directus/sdk": "17.0.2",
-    "@hookform/resolvers": "3.9.0",
+    "@hookform/resolvers": "^3.9.0",
     "@nextui-org/button": "2.0.38",
     "@nextui-org/card": "2.0.34",
     "@nextui-org/divider": "2.0.32",
@@ -31,7 +31,7 @@
     "react": "18",
     "react-dom": "18",
     "react-hook-form": "7.53.0",
-    "zod": "3.23.8"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "20",

@@ -75,7 +75,7 @@ const NavComp = () => {
         <NavbarMenu className="space-y-5">
           <NavbarMenuItem>
             <Link
-              href={"/sign-up"}
+              href={"/auth"}
               className="text-xl font-bold tracking-widest">
               <Button color="success">Log in</Button>
             </Link>

@@ -1,12 +1,24 @@
 import LoginComp from "@/components/AuthComps/LoginComp";
 import SignupComp from "@/components/AuthComps/SignupComp";
 import { Tab, Tabs } from "@nextui-org/tabs";
+import Link from "next/link";
 
 const auth = () => {
   return (
     <>
-      <div className="flex h-dvh flex-col items-center justify-center">
-        <Tabs aria-label="Options">
+      <div className="flex h-dvh flex-col items-center justify-start gap-10 pt-20">
+        <Tabs
+          aria-label="Options"
+          variant="underlined"
+          size="lg"
+          classNames={{
+            base: "",
+            tabList: "border-b border-divider p-0",
+            tab: "h-12 max-w-fit",
+            tabContent: "text-2xl",
+            cursor: "w-full",
+            panel: "",
+          }}>
           <Tab
             key="login"
             title="Log In">
@@ -19,6 +31,15 @@ const auth = () => {
             <SignupComp />
           </Tab>
         </Tabs>
+
+        <div className="text-xl">
+          Don't want to log in / sign up?{" "}
+          <Link
+            href="/"
+            className="text-blue-500">
+            Explore
+          </Link>
+        </div>
       </div>
     </>
   );
