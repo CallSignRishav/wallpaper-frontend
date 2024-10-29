@@ -1,14 +1,8 @@
 import { Tooltip } from "@nextui-org/tooltip";
 import { Image } from "@nextui-org/image";
+import { Posts } from "@/utils/directusSdk";
 
-interface PostType {
-  id: string;
-  post_caption: string;
-  post_img: string;
-  post_author: string;
-}
-
-const PostCard = ({ details }: { details: PostType }) => {
+const PostCard = ({ details }: { details: Posts }) => {
   return (
     <>
       <Tooltip
@@ -28,8 +22,8 @@ const PostCard = ({ details }: { details: PostType }) => {
         }}>
         <Image
           isZoomed
-          src={details.post_img}
-          alt={details.post_author}
+          src={`http://localhost:8055/assets/${details.post_img}`}
+          alt={details.post_caption}
           className="w-[350px] object-contain"
         />
       </Tooltip>

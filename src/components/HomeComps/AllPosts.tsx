@@ -1,64 +1,52 @@
+import { useQuery } from "@tanstack/react-query";
 import PostCard from "./PostCard";
+import { Posts, sdk } from "@/utils/directusSdk";
+import { readItems } from "@directus/sdk";
 
 const AllPosts = () => {
-  const postArray = [
-    {
-      id: "1",
-      post_caption: "Wallpaper 1",
-      post_img: "/wall-1.jpg",
-      post_author: "John Doe",
-    },
+  const { isLoading, isFetching, isSuccess, isFetched, isError, data } =
+    useQuery({
+      queryKey: ["posts"],
+      queryFn: async () => {
+        const response = await sdk.request(
+          readItems("posts", {
+            fields: ["*", { post_author: ["*"] }],
+          }),
+        );
 
-    {
-      id: "2",
-      post_caption: "Wallpaper 2",
-      post_img: "/wall-2.jpg",
-      post_author: "Micky Mouse",
-    },
+        return response as Posts[];
+      },
 
-    {
-      id: "3",
-      post_caption: "Wallpaper 3",
-      post_img: "/wall-3.png",
-      post_author: "Fread Eagle",
-    },
+      refetchOnWindowFocus: false,
+    });
 
-    {
-      id: "4",
-      post_caption: "Wallpaper 4",
-      post_img: "/wall-3.png",
-      post_author: "John Doe",
-    },
+  if (isLoading || isFetching) {
+    return <div>Loading...</div>;
+  }
 
-    {
-      id: "5",
-      post_caption: "Wallpaper 5",
-      post_img: "/wall-2.jpg",
-      post_author: "Micky Mouse",
-    },
+  if (isError) {
+    return <div>Error: {isError}</div>;
+  }
 
-    {
-      id: "6",
-      post_caption: "Wallpaper 6",
-      post_img: "/wall-1.jpg",
-      post_author: "John Doe",
-    },
-  ];
+  if (isFetched && isSuccess) {
+    // console.log(data);
 
-  return (
-    <>
-      <div className="flex flex-wrap justify-evenly gap-10">
-        {postArray.map((item) => {
-          return (
-            <PostCard
-              key={item.id}
-              details={item}
-            />
-          );
-        })}
-      </div>
-    </>
-  );
+    return (
+      <>
+        <div className="flex flex-wrap justify-evenly gap-10">
+          {data.map((item) => {
+            return (
+              <PostCard
+                key={item.id}
+                // details={item}
+                details={item}
+              />
+            );
+          })}
+        </div>
+      </>
+    );
+  }
 };
 
 export default AllPosts;
