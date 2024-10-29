@@ -26,7 +26,7 @@ const AllPosts = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 place-items-center gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {postArray.map((item) => {
           return (
             <PostCard

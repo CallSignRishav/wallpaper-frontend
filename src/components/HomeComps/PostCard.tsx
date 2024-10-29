@@ -1,5 +1,5 @@
 import { Tooltip } from "@nextui-org/tooltip";
-import Image from "next/image";
+import { Image } from "@nextui-org/image";
 
 interface PostType {
   id: string;
@@ -26,14 +26,12 @@ const PostCard = ({ details }: { details: PostType }) => {
           ],
         }}>
         <div className="w-full">
-          <div className="relative h-[300px] w-full">
+          <div className="">
             <Image
+              isZoomed
               src={details.post_img}
               alt={details.post_author}
-              fill
-              sizes="30vw"
-              priority
-              className="h-auto w-auto object-contain"
+              className=""
             />
           </div>
         </div>
