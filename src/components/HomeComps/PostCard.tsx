@@ -14,7 +14,8 @@ const PostCard = ({ details }: { details: PostType }) => {
       <Tooltip
         content={details.post_caption}
         closeDelay={200}
-        offset={-50}
+        // offset={-150}
+
         classNames={{
           base: [
             // arrow color
@@ -25,16 +26,12 @@ const PostCard = ({ details }: { details: PostType }) => {
             "text-black font-noto_sans bg-gradient-to-br from-white to-blue-300 text-[.75rem] py-[1px]",
           ],
         }}>
-        <div className="w-full">
-          <div className="">
-            <Image
-              isZoomed
-              src={details.post_img}
-              alt={details.post_author}
-              className=""
-            />
-          </div>
-        </div>
+        <Image
+          isZoomed
+          src={details.post_img}
+          alt={details.post_author}
+          className="w-[350px] object-contain"
+        />
       </Tooltip>
     </>
   );
