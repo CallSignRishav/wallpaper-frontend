@@ -1,22 +1,12 @@
 import { authentication, createDirectus, rest } from "@directus/sdk";
 import { env } from "./env";
-
-export interface User {
-  id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  description: string;
-  avatar: string;
-  role: string;
-}
+import { User } from "@directus/types";
 
 export interface Posts {
   id: string;
   post_caption: string;
   post_img: string;
-  post_author?: User[] | undefined;
+  post_author?: User;
 }
 
 interface Schema {

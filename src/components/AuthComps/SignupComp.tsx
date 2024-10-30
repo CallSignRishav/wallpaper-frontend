@@ -29,9 +29,9 @@ const SignupComp = () => {
 
   const formSubmit = async (data: SignUpType) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await sdk.request(createUser(data));
 
-      sdk.request(createUser(data));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // console.log(data);
 
