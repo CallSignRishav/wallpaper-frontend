@@ -6,11 +6,17 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { sdk } from "@/utils/directusSdk";
+import { login } from "@directus/sdk";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 const LoginComp = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  const { replace } = useRouter();
 
   const {
     register,
@@ -23,11 +29,44 @@ const LoginComp = () => {
   });
 
   const formSubmit = async (data: LogInType) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await sdk.request(
+        login(data.email, data.password, {
+          mode: "session",
+        }),
+      );
 
-    console.log(data);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    reset();
+      console.log(data);
+
+      reset();
+
+      toast.success("Login successful");
+
+      replace("/account");
+    } catch (error: any) {
+      if (error.errors !== undefined) {
+        console.log(error.errors[0].message);
+
+        toast.error(error.errors[0].message, {
+          duration: 3000,
+          style: {
+            background: "#101818",
+            color: "#fff",
+          },
+        });
+      } else {
+        console.log("Network error");
+        toast.error("Network error", {
+          duration: 2500,
+          style: {
+            background: "#101818",
+            color: "#fff",
+          },
+        });
+      }
+    }
   };
 
   return (

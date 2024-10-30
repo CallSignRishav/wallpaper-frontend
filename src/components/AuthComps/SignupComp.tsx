@@ -9,6 +9,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const SignupComp = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,10 +38,36 @@ const SignupComp = () => {
 
       // reload();
 
+      toast.success("Sign up successful. Log in to continue", {
+        duration: 2500,
+        style: {
+          background: "#101818",
+          color: "#fff",
+        },
+      });
+
       reset();
-    } catch (error) {
-      // console.log(errors);
-      console.log(error);
+    } catch (error: any) {
+      if (error.errors !== undefined) {
+        console.log(error.errors[0].message);
+
+        toast.error(error.errors[0].message, {
+          duration: 3000,
+          style: {
+            background: "#101818",
+            color: "#fff",
+          },
+        });
+      } else {
+        console.log("Network error");
+        toast.error("Network error", {
+          duration: 2500,
+          style: {
+            background: "#101818",
+            color: "#fff",
+          },
+        });
+      }
     }
   };
 

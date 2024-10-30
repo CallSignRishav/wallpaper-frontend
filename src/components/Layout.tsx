@@ -1,7 +1,8 @@
+import { darkModeAtom } from "@/utils/atoms";
+import { useAtom } from "jotai/react";
 import { ReactNode, useEffect } from "react";
 import MainHeader from "./Header/MainHeader";
-import { useAtom } from "jotai/react";
-import { darkModeAtom } from "@/utils/atoms";
+import { Toaster } from "react-hot-toast";
 
 type LayoutPropType = {
   children: ReactNode;
@@ -23,6 +24,11 @@ const Layout = ({ children }: LayoutPropType) => {
       <MainHeader />
 
       <main className="container mx-auto px-4">{children}</main>
+
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
     </>
   );
 };
