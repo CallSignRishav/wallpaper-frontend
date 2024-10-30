@@ -19,4 +19,6 @@ export const signupSchema = z.object({
     .string()
     .min(5, { message: "Password must be at least 5 characters" })
     .max(20, { message: "Password must be at most 20 characters" }),
+
+  role: z.string(),
 });

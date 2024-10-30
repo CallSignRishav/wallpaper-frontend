@@ -1,4 +1,5 @@
 import { authentication, createDirectus, rest } from "@directus/sdk";
+import { env } from "./env";
 
 export interface User {
   id: string;
@@ -24,6 +25,6 @@ interface Schema {
 }
 
 // Client with REST support
-export const sdk = createDirectus<Schema>("http://localhost:8055")
+export const sdk = createDirectus<Schema>(env.NEXT_PUBLIC_API)
   .with(authentication("session", { credentials: "include" }))
   .with(rest({ credentials: "include" }));

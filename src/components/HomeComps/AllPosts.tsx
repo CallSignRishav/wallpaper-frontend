@@ -1,13 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import PostCard from "./PostCard";
 import { Posts, sdk } from "@/utils/directusSdk";
 import { readItems } from "@directus/sdk";
+import { useQuery } from "@tanstack/react-query";
+import LoadingCard from "./LoadingCard";
+import PostCard from "./PostCard";
 
 const AllPosts = () => {
-  const { isLoading, isFetching, isSuccess, isFetched, isError, data } =
+  const { isLoading, isFetching, isSuccess, isFetched, isError, error, data } =
     useQuery({
       queryKey: ["posts"],
       queryFn: async () => {
+        await new Promise((r) => setTimeout(r, 1000));
+
         const response = await sdk.request(
           readItems("posts", {
             fields: ["*", { post_author: ["*"] }],
@@ -21,16 +24,20 @@ const AllPosts = () => {
     });
 
   if (isLoading || isFetching) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex flex-wrap justify-evenly gap-10">
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+      </div>
+    );
   }
 
   if (isError) {
-    return <div>Error: {isError}</div>;
+    return <div className="text-center text-xl">{error.message}</div>;
   }
 
   if (isFetched && isSuccess) {
-    // console.log(data);
-
     return (
       <>
         <div className="flex flex-wrap justify-evenly gap-10">

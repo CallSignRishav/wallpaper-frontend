@@ -1,5 +1,7 @@
+import { sdk } from "@/utils/directusSdk";
 import { signupSchema } from "@/utils/schemas";
 import { SignUpType } from "@/utils/types";
+import { createUser } from "@directus/sdk";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
@@ -26,13 +28,20 @@ const SignupComp = () => {
   });
 
   const formSubmit = async (data: SignUpType) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    console.log(data);
+      sdk.request(createUser(data));
 
-    reset();
+      // console.log(data);
 
-    reload();
+      // reload();
+
+      reset();
+    } catch (error) {
+      // console.log(errors);
+      console.log(error);
+    }
   };
 
   return (
@@ -85,6 +94,13 @@ const SignupComp = () => {
             {...register("password")}
             errorMessage={errors.password?.message}
             isInvalid={!!errors.password?.message}
+          />
+
+          <Input
+            defaultValue="e20a1888-44fd-4a48-8023-42f5de451234"
+            {...register("role")}
+            className="hidden"
+            // isDisabled
           />
 
           <Button
