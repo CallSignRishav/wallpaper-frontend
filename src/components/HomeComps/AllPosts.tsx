@@ -25,7 +25,7 @@ const AllPosts = () => {
 
   if (isLoading || isFetching) {
     return (
-      <div className="flex flex-wrap justify-evenly gap-10">
+      <div className="grid grid-cols-1 place-items-center gap-10 md:grid-cols-2 md:items-start md:justify-center lg:grid-cols-3 xl:grid-cols-4">
         <LoadingCard />
         <LoadingCard />
         <LoadingCard />
@@ -40,7 +40,7 @@ const AllPosts = () => {
   if (isFetched && isSuccess) {
     return (
       <>
-        <div className="flex flex-wrap justify-evenly gap-10">
+        <div className="grid grid-cols-1 place-items-center gap-10 md:grid-cols-2 md:items-start md:justify-center lg:grid-cols-3 xl:grid-cols-4">
           {data.map((item) => {
             return (
               <PostCard

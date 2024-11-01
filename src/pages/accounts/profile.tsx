@@ -3,10 +3,19 @@ import { Card, CardBody, CardFooter } from "@nextui-org/card";
 import { BookUser, Mail, User, UserRound, UsersRound } from "lucide-react";
 import { Divider } from "@nextui-org/divider";
 import AllPosts from "@/components/HomeComps/AllPosts";
+import Head from "next/head";
 
 const profile = () => {
   return (
     <>
+      <Head>
+        <title>Profile | Wallpaper App</title>
+        <meta
+          name="description"
+          content="Profile | Wallpaper App"
+        />
+      </Head>
+
       <div className="flex w-full flex-col items-center justify-center gap-20 py-20">
         <Card className="flex w-full flex-col items-center justify-center">
           <CardBody className="grid max-w-lg grid-cols-3 gap-5 text-xl">

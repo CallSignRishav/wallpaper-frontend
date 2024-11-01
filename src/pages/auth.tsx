@@ -1,11 +1,20 @@
 import LoginComp from "@/components/AuthComps/LoginComp";
 import SignupComp from "@/components/AuthComps/SignupComp";
 import { Tab, Tabs } from "@nextui-org/tabs";
+import Head from "next/head";
 import Link from "next/link";
 
 const auth = () => {
   return (
     <>
+      <Head>
+        <title>Auth Page | Wallpaper App</title>
+        <meta
+          name="description"
+          content="Auth Page | Wallpaper App"
+        />
+      </Head>
+
       <div className="flex h-dvh flex-col items-center justify-start gap-10 pt-20">
         <Tabs
           aria-label="Options"
