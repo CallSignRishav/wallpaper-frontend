@@ -1,3 +1,4 @@
+import { userAtom } from "@/utils/atoms";
 import {
   Navbar,
   NavbarBrand,
@@ -7,12 +8,14 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
+import { useAtom } from "jotai/react";
+import { User } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import LogoutComp from "../AuthComps/LogoutComp";
 import ToggleDark from "./ToggleDark";
-import { useRouter } from "next/router";
-import { User } from "lucide-react";
+import AuthUserName from "../AuthComps/AuthUserName";
 
 const AuthNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,7 +60,7 @@ const AuthNav = () => {
           justify="end"
           className="hidden lg:flex">
           <NavbarItem>
-            <Link href="/accounts/profile">Username</Link>
+            <AuthUserName />
           </NavbarItem>
 
           <NavbarItem>

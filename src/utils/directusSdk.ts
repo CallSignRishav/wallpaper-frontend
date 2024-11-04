@@ -6,7 +6,7 @@ export interface Posts {
   id: string;
   post_caption: string;
   post_img: string;
-  post_author?: User;
+  post_author?: string | User;
 }
 
 interface Schema {

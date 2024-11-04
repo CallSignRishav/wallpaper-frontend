@@ -1,5 +1,6 @@
 import UploadFile from "@/components/AccountComps/UploadFile";
 import AllPosts from "@/components/HomeComps/AllPosts";
+
 import Head from "next/head";
 
 const account = () => {
@@ -9,7 +10,7 @@ const account = () => {
         <title>Home | Wallpaper App</title>
         <meta
           name="description"
-          content="Home |Wallpaper App"
+          content="Home | Wallpaper App"
         />
       </Head>
 

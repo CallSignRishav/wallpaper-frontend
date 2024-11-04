@@ -22,3 +22,10 @@ export const signupSchema = z.object({
 
   role: z.string(),
 });
+
+export const formSchema = z.object({
+  post_caption: z
+    .string()
+    .min(5, { message: "Caption must be at least 5 characters" })
+    .max(25, { message: "Caption must be at most 25 characters" }),
+});
