@@ -6,15 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Eye, EyeOff } from "lucide-react";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const SignupComp = () => {
   const [isVisible, setIsVisible] = useState(false);
-
-  const { reload } = useRouter();
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
