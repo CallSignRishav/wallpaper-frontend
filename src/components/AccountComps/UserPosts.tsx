@@ -45,7 +45,7 @@ const UserPosts = ({ authorId }: UserPostProp) => {
   }
 
   if (isFetched && isSuccess) {
-    console.log(data);
+    // console.log(data);
 
     return (
       <>

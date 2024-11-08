@@ -1,4 +1,3 @@
-import { userAtom } from "@/utils/atoms";
 import { sdk } from "@/utils/directusSdk";
 import { Button } from "@nextui-org/button";
 import {
@@ -7,7 +6,6 @@ import {
   ModalContent,
   useDisclosure,
 } from "@nextui-org/modal";
-import { useAtom } from "jotai/react";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";

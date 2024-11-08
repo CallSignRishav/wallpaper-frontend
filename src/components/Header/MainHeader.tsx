@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
-import NavComp from "./NavComp";
 import AuthNav from "./AuthNav";
-import { useAtom } from "jotai/react";
-import { userAtom } from "@/utils/atoms";
+import NavComp from "./NavComp";
 
 type UserName = {
   first_name?: string;
@@ -10,9 +8,6 @@ type UserName = {
 
 const MainHeader = () => {
   const pathName = useRouter().pathname;
-  // const [accUser, setAccUser] = useAtom(userAtom);
-
-  //   const userTest = accUser? accUser.first_name : "Admin"
 
   if (pathName === "/") {
     return <NavComp />;
