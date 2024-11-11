@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -8,16 +7,23 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/navbar";
+import { User } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@nextui-org/button";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import AuthUserName from "../AuthComps/AuthUserName";
+import LogoutComp from "../AuthComps/LogoutComp";
 import ToggleDark from "./ToggleDark";
 
-const NavComp = () => {
+const AuthNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const router = useRouter();
 
   return (
     <>
       <Navbar
+        isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         isBordered
         maxWidth="xl">
@@ -52,11 +58,11 @@ const NavComp = () => {
           justify="end"
           className="hidden lg:flex">
           <NavbarItem>
-            <Link
-              href={"/auth"}
-              className="text-xl font-bold tracking-widest">
-              <Button color="success">Log in</Button>
-            </Link>
+            <AuthUserName />
+          </NavbarItem>
+
+          <NavbarItem>
+            <LogoutComp />
           </NavbarItem>
 
           <NavbarItem>
@@ -72,13 +78,21 @@ const NavComp = () => {
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarMenu className="space-y-5">
+        <NavbarMenu className="space-y-3 py-5">
           <NavbarMenuItem>
-            <Link
-              href={"/auth"}
-              className="text-xl font-bold tracking-widest">
-              <Button color="success">Log in</Button>
-            </Link>
+            <button
+              className="flex items-center gap-3 px-1 text-xl hover:text-blue-600"
+              onClick={() => {
+                setIsMenuOpen(false);
+                router.push("/accounts/profile");
+              }}>
+              <User />
+              Username
+            </button>
+          </NavbarMenuItem>
+
+          <NavbarMenuItem>
+            <LogoutComp />
           </NavbarMenuItem>
         </NavbarMenu>
       </Navbar>
@@ -86,4 +100,4 @@ const NavComp = () => {
   );
 };
 
-export default NavComp;
+export default AuthNav;

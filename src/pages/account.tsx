@@ -1,7 +1,9 @@
+import UploadFile from "@/components/AccountComps/UploadFile";
 import AllPosts from "@/components/HomeComps/AllPosts";
+
 import Head from "next/head";
 
-const index = () => {
+const account = () => {
   return (
     <>
       <Head>
@@ -12,11 +14,15 @@ const index = () => {
         />
       </Head>
 
-      <div className="py-20">
+      <div className="space-y-10 py-20">
+        <div className="flex items-center justify-center">
+          <UploadFile />
+        </div>
+
         <AllPosts />
       </div>
     </>
   );
 };
 
-export default index;
+export default account;
